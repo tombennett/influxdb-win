@@ -8,14 +8,13 @@ ENV influxDBVersion influxdb-1.2.2_windows_amd64
 RUN powershell -executionpolicy bypass -command \
 	# Make directory
 	mkdir "c:\influxdb" ;\
-	cd "c:\influxdb" ;\
       # Download influxdb ;\
-      $url = "https://dl.influxdata.com/influxdb/releases/influxdb-1.2.2_windows_amd64.zip" ;\
+      $url = 'https://dl.influxdata.com/influxdb/releases/influxdb-1.2.2_windows_amd64.zip' ;\
       $outputFile = "$PSScriptRoot\influxdb.zip" ;\
       (New-Object System.Net.WebClient).DownloadFile($url, $outputFile)
 
 RUN powershell -executionpolicy bypass -command \
 	# Extract archive ;\
-	Expand-Archive "influxdb.zip" -DestinationPath "c:\influxdb"
+	Expand-Archive "c:\influxdb\influxdb.zip" -DestinationPath "c:\influxdb"
 	
 ENTRYPOINT ["C:\\influxdb\\influxd.exe"]	
