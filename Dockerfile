@@ -7,11 +7,11 @@ ENV influxDBVersion influxdb-1.2.2_windows_amd64
 
 RUN powershell -executionpolicy bypass -command \
       # Download influxdb ;\
-      Invoke-WebRequest "https://dl.influxdata.com/influxdb/releases/$($env:influxDBVersion).zip" -Outfile "$($env:influxDBVersion).zip" -UseBasicParsing)
+      Invoke-WebRequest "https://dl.influxdata.com/influxdb/releases/$env:influxDBVersion.zip" -Outfile "$env:influxDBVersion.zip" -UseBasicParsing
 
 RUN powershell -executionpolicy bypass -command \
 	# Extract archive ;\
 	mkdir "c:\influxdb" ;\
-	Expand-Archive "$version.zip" -DestinationPath "c:\influxdb"
+	Expand-Archive "$env:influxDBVersion.zip" -DestinationPath "c:\influxdb"
 	
 ENTRYPOINT ["C:\\influxdb\\influxd.exe"]	
