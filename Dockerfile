@@ -11,7 +11,8 @@ RUN powershell -executionpolicy bypass -command \
 	cd "c:\influxdb" ;\
       # Download influxdb ;\
       $url = "https://dl.influxdata.com/influxdb/releases/$env:influxDBVersion.zip" ;\
-      (New-Object System.Net.WebClient).DownloadFile($url, "influxdb.zip")
+      $outputFile = "influxdb.zip" ;\
+      (New-Object System.Net.WebClient).DownloadFile($url, $outputFile)
       #(new-object net.webclient).DownloadString('https://dl.influxdata.com/influxdb/releases/influxdb-1.2.2_windows_amd64.zip','influxdb.zip')
       #Invoke-WebRequest "https://dl.influxdata.com/influxdb/releases/$env:influxDBVersion.zip" -Outfile "$env:influxDBVersion.zip" -UseBasicParsing
 
