@@ -18,7 +18,7 @@ RUN powershell -executionpolicy bypass -command \
 	Expand-Archive 'c:\tmp\influxdb.zip' -DestinationPath 'c:\'
 
 RUN powershell -executionpolicy bypass -command \
-	# Extract archive ;\
-	ls c:\influxdb
-
+	# Rename extracted folder
+	Move-Item -Path "c:\$($(Get-ChildItem "C:\" -Filter "influxdb*").Name)" -Destination "c:\influxdb"
+ 
 ENTRYPOINT ["C:\\influxdb\\influxd.exe"]	
