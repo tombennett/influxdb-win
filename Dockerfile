@@ -16,5 +16,9 @@ RUN powershell -executionpolicy bypass -command \
 RUN powershell -executionpolicy bypass -command \
 	# Extract archive ;\
 	Expand-Archive 'c:\tmp\influxdb.zip' -DestinationPath 'c:\'
-	
+
+RUN powershell -executionpolicy bypass -command \
+	# Extract archive ;\
+	ls c:\influxdb
+
 ENTRYPOINT ["C:\\influxdb\\influxd.exe"]	
