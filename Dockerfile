@@ -19,7 +19,7 @@ RUN powershell -executionpolicy bypass -command \
 
 RUN powershell -executionpolicy bypass -command \
 	# Rename extracted folder
-	$folderName = (Get-ChildItem "C:\" -Filter "influxdb*").Name ;\
+	$folderName = (Get-ChildItem 'C:\' -Filter "influxdb*").Name ;\
 	Move-Item -Path "c:\$folderName" -Destination "c:\influxdb"
  
 ENTRYPOINT ["C:\\influxdb\\influxd.exe"]	
