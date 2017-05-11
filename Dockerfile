@@ -10,7 +10,8 @@ RUN powershell -executionpolicy bypass -command \
 	mkdir "c:\influxdb" ;\
 	cd "c:\influxdb" ;\
       # Download influxdb ;\
-      Invoke-WebRequest "https://dl.influxdata.com/influxdb/releases/$env:influxDBVersion.zip" -Outfile "$env:influxDBVersion.zip" -UseBasicParsing
+      (new-object net.webclient).DownloadString("https://dl.influxdata.com/influxdb/releases/$env:influxDBVersion.zip","$env:influxDBVersion.zip")
+      #Invoke-WebRequest "https://dl.influxdata.com/influxdb/releases/$env:influxDBVersion.zip" -Outfile "$env:influxDBVersion.zip" -UseBasicParsing
 
 RUN powershell -executionpolicy bypass -command \
 	# Extract archive ;\
