@@ -10,11 +10,9 @@ RUN powershell -executionpolicy bypass -command \
 	mkdir "c:\influxdb" ;\
 	cd "c:\influxdb" ;\
       # Download influxdb ;\
-      $url = "https://dl.influxdata.com/influxdb/releases/$env:influxDBVersion.zip" ;\
-      $outputFile = "influxdb.zip" ;\
+      $url = "https://dl.influxdata.com/influxdb/releases/influxdb-1.2.2_windows_amd64.zip" ;\
+      $outputFile = "$PSScriptRoot\influxdb.zip" ;\
       (New-Object System.Net.WebClient).DownloadFile($url, $outputFile)
-      #(new-object net.webclient).DownloadString('https://dl.influxdata.com/influxdb/releases/influxdb-1.2.2_windows_amd64.zip','influxdb.zip')
-      #Invoke-WebRequest "https://dl.influxdata.com/influxdb/releases/$env:influxDBVersion.zip" -Outfile "$env:influxDBVersion.zip" -UseBasicParsing
 
 RUN powershell -executionpolicy bypass -command \
 	# Extract archive ;\
